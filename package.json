@@ -1,0 +1,32 @@
+{
+  "name": "glitxt.api",
+  "version": "0.0.0",
+  "description": "The glitxt.com api",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/glitxt/API.git"
+  },
+  "keywords": [
+    "glitxt"
+  ],
+  "author": "glitxt.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/glitxt/API/issues"
+  },
+  "dependencies": {
+    "express": "3.4.0",
+    "ejs": "0.8.4",
+    "request": "2.27.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "supertest" : "*",
+    "jshint": "*"
+  }
+}
