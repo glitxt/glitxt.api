@@ -15,5 +15,8 @@ test:
 docs:
 	@node node_modules/.bin/subtool --help
 
+heroku:
+	git pull git@github.com:glitxt/API.git
+	git push
 
-.PHONY: run test docs
+.PHONY: run test docs heroku
