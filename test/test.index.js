@@ -9,8 +9,11 @@ describe('test "server.js" routes', function() {
     request
       .get('/')
       .expect(200, function(err){
-        if (err) console.log(err);
-        done();
+        if (err) {
+          console.log(err);
+        } else {
+          done();
+        }
       })
   })
 
