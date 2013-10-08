@@ -5,35 +5,35 @@ request = request('http://localhost:4000');
 
 describe('test "server.js" routes', function() {
 
-  it("GET /api", function(done) {
+  it("GET /", function(done) {
     request
-      .get('/api')
+      .get('/')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
 
-  it("GET /api/encode", function(done) {
+  it("GET /v1/encode", function(done) {
     request
-      .get('/api/encode')
+      .get('/v1/encode')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
 
-  it("GET /api/decode", function(done) {
+  it("GET /v1/decode", function(done) {
     request
-      .get('/api/decode')
+      .get('/v1/decode')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
-  it("GET /api/decode?url", function(done) {
+  it("GET /v1/decode?url", function(done) {
     request
-      .get('/api/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/test2.gif')
+      .get('/v1/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/test2.gif')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
