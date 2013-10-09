@@ -28,6 +28,7 @@ exports.routes = function(express) {
   express.get('/ping', ping);
   express.get('/encode', encode);
   express.get('/decode', decode);
+  express.get('/data', data);
 };
 
 function index(req, res) {
@@ -35,7 +36,8 @@ function index(req, res) {
     response: {
       ping: BASE_URL+'/ping',
       encode: BASE_URL+'/encode',
-      decode: BASE_URL+'/decode'
+      decode: BASE_URL+'/decode',
+      data: BASE_URL+'/data'
     }
   };
   utils.responseJson(res, apiModel.base(res, obj));
@@ -110,4 +112,15 @@ function decode(req, res) {
     var tmp = apiModel.base(res, {code:400});
     utils.responseJson(res, tmp);
   }
+}
+
+function data(req, res) {
+  var obj = {
+    response: {
+      cats: BASE_URL+'/data/cat1.png'
+    }
+  };
+
+  var tmp = apiModel.base(res, obj);
+  utils.responseJson(res, tmp);
 }
