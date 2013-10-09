@@ -45,7 +45,7 @@ describe('test "server.js" routes', function() {
   })
   it("GET /v1/decode?url", function(done) {
     request
-      .get('/v1/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/test2.gif')
+      .get('/v1/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/generated_gifs/1380399254693.gif')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
