@@ -31,7 +31,7 @@ exports.routes = function(express, baseUrl){
 function ping(req, res){
   var tmp = apiModel.base(res, {status: 'OK'});
   utils.responseJson(res, tmp);
-};
+}
 
 /**
  * The /encode route
@@ -51,7 +51,7 @@ function encode(req, res){
 
   var tmp = apiModel.base(res, {status: 'OK', response: { text: qText, img: qImg } } );
   utils.responseJson(res, tmp);
-};
+}
 
 /**
  * The /decode route
@@ -78,7 +78,7 @@ function decode(req, res){
   }
   // If no query exists, return an error json.
   else {
-    var tmp = apiModel.base(res, {status: 'error'})
+    var tmp = apiModel.base(res, {status: 'error'});
     utils.responseJson(res, tmp);
-  };
-};
+  }
+}

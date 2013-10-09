@@ -13,10 +13,17 @@ run:
 ###
 # Test it.
 ###
-test:
+test: hint
 	@echo "Test the Server"
 	@node node_modules/.bin/mocha --timeout 30000 --reporter spec
 
+
+###
+# Hint task.
+###
+
+hint:
+	@node node_modules/.bin/jshint server.js routes/ src/
 
 ###
 # Generate docs.
@@ -31,6 +38,10 @@ docs:
 report:
 	@echo "Generate 'plato' Report"
 	@node node_modules/.bin/plato --dir report --exclude lib/*.js routes/*.js server.js --title glitxt.api
+	mv report/ ../report
+	@git checkout gh-pages
+	@git add report/
+	@git commit -m "Update report"
 
 
 ###
@@ -42,4 +53,4 @@ heroku:
 	git push
 
 
-.PHONY: run test docs heroku
+.PHONY: run test hint docs report heroku
