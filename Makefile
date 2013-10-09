@@ -60,8 +60,8 @@ reportPush: report
 	git add report/report.json
 	git add report/files
 	@git commit -m "Update report"
-	# @git checkout -- report/
-	# @git checkout master
+	@git push
+	@git checkout master
 
 .PHONY: report reportPush
 
