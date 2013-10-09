@@ -36,30 +36,14 @@ docs:
 # Generate report.
 ###
 report:
-	#@git checkout master
-	#@rm -rf ${PWD}/report
-	#@git checkout gh-pages
-	#@mv ${PWD}/report ${PWD}/../tmpReport
-	#@git checkout master
-	#@mv ${PWD}/../tmpReport ${PWD}/report
-	
 	@echo "Generate 'plato' Report"
 	@node node_modules/.bin/plato --dir report --exclude lib/*.js lib/apiModel.js routes/*.js server.js --title glitxt.api
-	#@git checkout master
-
-reportPush: report
-	#@mv ${PWD}/report ${PWD}/../tmpReport
-	@git checkout gh-pages
-	#@rm -rf ${PWD}/report
-	#@mv ${PWD}/../tmpReport ${PWD}/report
 	
+reportPush: report
+	@git checkout gh-pages
+	@git pull https://github.com/glitxt/glitxt.api.git
 	@echo "Add and commit the report changes"
-	git add report/index.html
-	git add report/report.history.js
-	git add report/report.history.json
-	git add report/report.js
-	git add report/report.json
-	git add report/files
+	git add report/
 	@git commit -m "Update /report directory - ${date}"
 	#@git push
 	#@git checkout master
