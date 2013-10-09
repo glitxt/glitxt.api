@@ -36,6 +36,22 @@ docs:
 # Generate report.
 ###
 report:
+	git checkout gh-pages
+	mv /report ../report
+	git checkout master
+	mv ../report report
+
+	@echo "Generate 'plato' Report"
+	@node node_modules/.bin/plato --dir report --exclude lib/*.js routes/*.js server.js --title glitxt.api
+	mv report/ ../report
+	@git checkout gh-pages
+	mv ../report /report
+	@git add report
+	@git commit -m "Update report"
+
+
+
+testREP:
 	@echo "Generate 'plato' Report"
 	@node node_modules/.bin/plato --dir report --exclude lib/*.js routes/*.js server.js --title glitxt.api
 	mv report/ ../report
