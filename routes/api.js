@@ -29,7 +29,7 @@ exports.routes = function(express, baseUrl){
  * The /ping route
  */
 function ping(req, res){
-  var tmp = apiModel(res, {status: 'OK'});
+  var tmp = apiModel.base(res, {status: 'OK'});
   utils.responseJson(res, tmp);
 };
 
@@ -38,16 +38,19 @@ function ping(req, res){
  * Encode a text message and return an image.
  */
 function encode(req, res){
-  // the queries we use at this route.
-  var qUrl = req.query.text;
+  var qText = req.query.text;
+  var qImg = req.query.img;
 
-  if (qUrl) {
-    glitch.encode.text(qUrl, function(data) {
-      // var tmp = apiObject(res, {status: 'ok', message: data, source: qUrl});
-      // utils.responseJson(res, tmp);
-      console.log('ENCODE');
-    });
-  };
+  // if (qUrl) {
+  //   glitch.encode.text(qUrl, function(data) {
+  //     // var tmp = apiModel(res, {status: 'ok', message: data, source: qUrl});
+  //     // utils.responseJson(res, tmp);
+  //     console.log('ENCODE');
+  //   });
+  // };
+
+  var tmp = apiModel.base(res, {status: 'OK', response: { text: qText, img: qImg } } );
+  utils.responseJson(res, tmp);
 };
 
 /**
@@ -69,13 +72,13 @@ function decode(req, res){
   if (req.query.url) {
     // Decode it...
     glitch.decode.url(qUrl, function(data) {
-      var tmp = apiObject(res, {status: 'ok', message: data.decodedText, source: qUrl});
+      var tmp = apiModel.base(res, {status: 'ok', message: data.decodedText, source: qUrl});
       utils.responseJson(res, tmp);
     });
   }
   // If no query exists, return an error json.
   else {
-    var tmp = apiObject(res, {status: 'error'})
+    var tmp = apiModel.base(res, {status: 'error'})
     utils.responseJson(res, tmp);
   };
 };
