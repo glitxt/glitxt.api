@@ -1,5 +1,6 @@
-API
-===
+# glitxt.api
+
 [![Build Status](https://travis-ci.org/glitxt/glitxt.api.png?branch=master)](https://travis-ci.org/glitxt/glitxt.api)
 
-The glitxt api (Work in Progress)
+The api.glitxt.com server.  
+At the moment this is totally Work in Progress...  

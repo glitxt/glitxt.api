@@ -9,7 +9,6 @@
 var http = require('http');
 var path = require('path');
 var express = require('express');
-var routes = require('./routes');
 var api = require('./routes/api');
 
 var app = express();
@@ -29,10 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
-
-// Index route.
-// This is the API Docs page.
-app.get('/', routes.index);
 
 // The API routes
 api.routes(app, '/v1');
