@@ -1,6 +1,6 @@
 {
   "name": "glitxt.api",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The glitxt.com api",
   "main": "index.js",
   "scripts": {
