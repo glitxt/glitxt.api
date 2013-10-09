@@ -17,6 +17,15 @@ describe('test "server.js" routes', function() {
       })
   })
 
+  it("GET /v1/ping", function(done) {
+    request
+      .get('/v1/ping')
+      .expect(200, function(err){
+        if (err) console.log(err);
+        done();
+      })
+  })
+
   it("GET /v1/encode", function(done) {
     request
       .get('/v1/encode')
