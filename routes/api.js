@@ -8,7 +8,7 @@
 /**
  * Module dependencies.
  */
-var glitch = require('glitxt');
+var glitxt = require('glitxt');
 var apiModel = require('../lib/apiModel');
 var utils = require('../lib/utils');
 
@@ -42,7 +42,7 @@ function encode(req, res){
   var qImg = req.query.img;
 
   // if (qUrl) {
-  //   glitch.encode.text(qUrl, function(data) {
+  //   glitxt.encode.text(qUrl, function(data) {
   //     // var tmp = apiModel(res, {status: 'ok', message: data, source: qUrl});
   //     // utils.responseJson(res, tmp);
   //     console.log('ENCODE');
@@ -71,7 +71,7 @@ function decode(req, res){
   // If a query exists...
   if (req.query.url) {
     // Decode it...
-    glitch.decode.url(qUrl, function(data) {
+    glitxt.decode.url(qUrl, function(data) {
       var tmp = apiModel.base(res, {status:'ok',response:{message:data.decodedText,source:qUrl}});
       utils.responseJson(res, tmp);
     });
