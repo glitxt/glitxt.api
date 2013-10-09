@@ -26,6 +26,14 @@ docs:
 
 
 ###
+# Generate report.
+###
+report:
+	@echo "Generate 'plato' Report"
+	@node node_modules/.bin/plato --dir report --exclude lib/*.js routes/*.js server.js --title glitxt.api
+
+
+###
 # Push to heroku.
 # Pull the last changes and then push to heroku.
 ###
