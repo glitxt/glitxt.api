@@ -29,7 +29,7 @@ exports.routes = function(express, baseUrl){
  * The /ping route
  */
 function ping(req, res){
-  var tmp = apiModel.base(res, {status:'OK'});
+  var tmp = apiModel.base(res, {status:'OK', response:{message:'pong'}});
   utils.responseJson(res, tmp);
 }
 
