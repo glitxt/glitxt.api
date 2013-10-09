@@ -59,7 +59,7 @@ reportPush: report
 	git add report/report.js
 	git add report/report.json
 	git add report/files
-	@git commit -m "Update report"
+	@git commit -m "Update /report directory - ${date}"
 	@git push
 	@git checkout master
 
