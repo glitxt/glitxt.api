@@ -44,7 +44,7 @@ report:
 	@mv ${PWD}/../tmpReport ${PWD}/report
 	
 	@echo "Generate 'plato' Report"
-	@node node_modules/.bin/plato --dir report --exclude routes/*.js lib/*.js lib/apiModel.js server.js --title glitxt.api
+	@node node_modules/.bin/plato --dir report --exclude lib/*.js routes/*.js server.js --title glitxt.api
 
 reportPush: report
 	@mv ${PWD}/report ${PWD}/../tmpReport
