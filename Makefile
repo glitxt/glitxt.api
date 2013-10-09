@@ -49,12 +49,19 @@ report:
 reportPush: report
 	@mv ${PWD}/report ${PWD}/../tmpReport
 	@git checkout gh-pages
-	@mv ${PWD}/../tmpReport ${PWD}
+	@rm -rf ${PWD}/report
+	@mv ${PWD}/../tmpReport ${PWD}/report
 	
 	@echo "Add and commit the report changes"
-	@git add report/
+	git add report/index.html
+	git add report/report.history.js
+	git add report/report.history.json
+	git add report/report.js
+	git add report/report.json
+	git add report/files
 	@git commit -m "Update report"
-	@git checkout master
+	# @git checkout -- report/
+	# @git checkout master
 
 .PHONY: report reportPush
 
