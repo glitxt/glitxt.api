@@ -29,7 +29,7 @@ exports.routes = function(express, baseUrl){
  * The /ping route
  */
 function ping(req, res){
-  var tmp = apiModel.base(res, {status: 'OK'});
+  var tmp = apiModel.base(res, {status:'OK'});
   utils.responseJson(res, tmp);
 }
 
@@ -49,7 +49,7 @@ function encode(req, res){
   //   });
   // };
 
-  var tmp = apiModel.base(res, {status: 'OK', response: { text: qText, img: qImg } } );
+  var tmp = apiModel.base(res, {status:'OK',response:{message:qText,img:qImg}});
   utils.responseJson(res, tmp);
 }
 
@@ -72,13 +72,13 @@ function decode(req, res){
   if (req.query.url) {
     // Decode it...
     glitch.decode.url(qUrl, function(data) {
-      var tmp = apiModel.base(res, {status: 'ok', message: data.decodedText, source: qUrl});
+      var tmp = apiModel.base(res, {status:'ok',response:{message:data.decodedText,source:qUrl}});
       utils.responseJson(res, tmp);
     });
   }
   // If no query exists, return an error json.
   else {
-    var tmp = apiModel.base(res, {status: 'error'});
+    var tmp = apiModel.base(res, {status:'error'});
     utils.responseJson(res, tmp);
   }
 }

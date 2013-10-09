@@ -23,7 +23,7 @@ test: hint
 ###
 
 hint:
-	@node node_modules/.bin/jshint server.js routes/ src/
+	@node node_modules/.bin/jshint server.js routes/ lib/
 
 ###
 # Generate docs.
