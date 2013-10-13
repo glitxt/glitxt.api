@@ -9,7 +9,7 @@
 var http = require('http');
 var path = require('path');
 var express = require('express');
-var api = require('./routes/api');
+var routes = require('./routes/index');
 
 var app = express();
 
@@ -28,7 +28,7 @@ if ('development' == app.get('env')) {
 }
 
 // The API routes
-api.routes(app);
+routes(app);
 
 // Create the Server.
 http.createServer(app).listen(app.get('port'), function(){

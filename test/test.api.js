@@ -1,16 +1,16 @@
 var assert = require('assert');
-var apiModel = require('./../lib/apiModel');
+var api = require('./../lib/api');
 
 
 // A dummy response object we need.
 var res = {statusCode: '200'};
 
 
-describe('lib/apiModel.js', function() {
+describe('lib/api.js', function() {
 
-  describe('#base()', function() {
+  describe('#model()', function() {
 
-    it('should return the base object.', function() {
+    it('should return the model object.', function() {
       var actual = {
         meta: {
           code: '200',
@@ -21,10 +21,10 @@ describe('lib/apiModel.js', function() {
         response: {
         }
       };
-      assert( actual, apiModel.base(res, {status: 'OK'}) );
+      assert( actual, api.model(res, {status: 'OK'}) );
     });
 
-    it('should return the base object and add something to the response param.', function() {
+    it('should return the model object and add something to the response param.', function() {
       var actual = {
         meta: {
           code: '200',
@@ -37,7 +37,7 @@ describe('lib/apiModel.js', function() {
           bar: 'BAR'
         }
       };
-      assert( actual, apiModel.base(res, {status:'OK',response:{foo:'FOO',bar:'BAR'}}) );
+      assert( actual, api.model(res, {status:'OK',response:{foo:'FOO',bar:'BAR'}}) );
     });
 
   });

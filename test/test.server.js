@@ -17,35 +17,35 @@ describe('test "server.js" routes', function() {
       })
   })
 
-  it("GET /v1/ping", function(done) {
+  it("GET /ping", function(done) {
     request
-      .get('/v1/ping')
+      .get('/ping')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
 
-  it("GET /v1/encode", function(done) {
+  it("GET /encode", function(done) {
     request
-      .get('/v1/encode')
+      .get('/encode')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
 
-  it("GET /v1/decode", function(done) {
+  it("GET /decode", function(done) {
     request
-      .get('/v1/decode')
+      .get('/decode')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
       })
   })
-  it("GET /v1/decode?url", function(done) {
+  it("GET /decode?url", function(done) {
     request
-      .get('/v1/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/generated_gifs/1380399254693.gif')
+      .get('/decode?url=https://dl.dropboxusercontent.com/u/2874680/glitxt/generated_gifs/1380399254693.gif')
       .expect(200, function(err){
         if (err) console.log(err);
         done();
