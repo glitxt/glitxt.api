@@ -22,7 +22,6 @@
   "dependencies": {
     "glitxt": "https://github.com/glitxt/glitxt/tarball/master",
     "express": "3.4.0",
-    "ejs": "0.8.4",
     "request": "2.27.0"
   },
   "devDependencies": {

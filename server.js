@@ -15,8 +15,6 @@ var app = express();
 
 // All environments.
 app.set('port', process.env.PORT || 4000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
@@ -30,7 +28,7 @@ if ('development' == app.get('env')) {
 }
 
 // The API routes
-api.routes(app, '/v1');
+api.routes(app);
 
 // Create the Server.
 http.createServer(app).listen(app.get('port'), function(){
