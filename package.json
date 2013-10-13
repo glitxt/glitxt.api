@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/glitxt/API.git"
+    "url": "git://github.com/glitxt/glitxt.api.git"
   },
   "keywords": [
     "glitxt"
