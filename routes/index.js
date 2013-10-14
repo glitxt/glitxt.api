@@ -7,32 +7,41 @@ var api = require('../lib/api');
 var ping = require('./ping');
 var encode = require('./encode');
 var decode = require('./decode');
-// var data = require('./data');
+//var data = require('./data');
 
 /**
  * Include all routes at this function.
  * So we can use this function to include all routes to the server.
  *
- * @param express - the express app
+ * @param restify - the restify app
  */
- module.exports = function(express) {
-	express.get('/', index);
-  express.get('/ping', ping);
-  express.get('/encode', encode);
-  express.get('/decode', decode);
-  // express.get('/data', data.index);
-  // express.get('/data/imgs', data.imgs);
-  // express.get('/data/gifs', data.gifs);
+ module.exports = function(restify) {
+
+	restify.get('/', index);
+  // Routes
+  restify.get('/ping', ping);
+  restify.get('/encode', encode);
+  restify.get('/decode', decode);
+  //restify.get('/data', data.index);
+  //restify.get('/data/imgs', data.imgs);
+  //restify.get('/data/img/*.png', data.imgs);
+  //restify.get('/data/gifs', data.gifs);
+  //restify.get('/data/gif/*.gif', data.gifs);
 };
 
-function index(req, res) {
+/**
+ * The / index route
+ *
+ * @param req, res - set by restify.
+ */
+function index(req, res, next) {
   var obj = {
     response: {
       ping: api.BASE_URL+'/ping',
       encode: api.BASE_URL+'/encode',
-      decode: api.BASE_URL+'/decode',
-      data: api.BASE_URL+'/data'
+      decode: api.BASE_URL+'/decode'//,
+      //data: api.BASE_URL+'/data'
     }
   };
-  api.responseJson(res, obj);
+  res.send(api.model(res, obj));
 }

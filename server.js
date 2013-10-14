@@ -6,31 +6,38 @@
 /**
  * Module dependencies.
  */
-var http = require('http');
-var path = require('path');
-var express = require('express');
-var routes = require('./routes/index');
+var restify = require('restify');
+var routes = require('./routes');
+var pkg = require('./package.json');
 
-var app = express();
-
-// All environments.
-app.set('port', process.env.PORT || 4000);
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Development only.
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
-}
+// Server
+var server = restify.createServer({
+	name: 'glitxt',
+  version: pkg.version
+});
+// Use the common stuff you probably want
+server.use(restify.acceptParser(server.acceptable));
+server.use(restify.dateParser());
+server.use(restify.queryParser());
+server.use(restify.gzipResponse());
+server.use(restify.bodyParser());
+// Set a per request bunyan logger (with requestid filled in)
+server.use(restify.requestLogger());
+// Allow 5 requests/second by IP, and burst to 10
+server.use(restify.throttle({
+        burst: 10,
+        rate: 5,
+        ip: true,
+}));
+// Clean up sloppy paths like //ping////////
+server.pre(restify.pre.sanitizePath());
+// Handles annoying user agents (curl)
+server.pre(restify.pre.userAgentConnection());
 
 // The API routes
-routes(app);
+routes(server);
 
 // Create the Server.
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Server listening on port ' + app.get('port'));
+server.listen(4000, function() {
+  console.log('%s listening at %s', server.name, server.url);
 });

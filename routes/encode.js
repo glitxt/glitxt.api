@@ -8,7 +8,7 @@ var api = require('../lib/api');
  * The /encode route
  * Encode a text message and return an image.
  */
-module.exports = function(req, res) {
+module.exports = function(req, res, next) {
   var qText = req.query.text;
   var qImg = req.query.img;
 
