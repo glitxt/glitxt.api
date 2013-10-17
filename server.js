@@ -54,6 +54,7 @@ server.pre(restify.pre.userAgentConnection());
 routes(server);
 
 // Create the Server.
-server.listen(4000, function() {
+var port = process.env.PORT || 4000;
+server.listen(port, function() {
   log.info('%s listening at %s', server.name, server.url);
 });
