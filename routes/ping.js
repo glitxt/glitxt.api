@@ -6,7 +6,9 @@ var api = require('../lib/api');
 /**
  * The /ping route.
  */
-module.exports = function(req, res) {
-  var tmp = {status:'OK', response:{message:'pong'}};
-  api.responseJson(res, tmp);
+module.exports = function(req, res, next) {
+  var obj = {status:'OK', response:{message:'pong'}};
+  res.send(api.model(res, obj));
+  log.info('GET /ping');
+  return next();
 };

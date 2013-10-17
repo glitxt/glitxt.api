@@ -56,7 +56,7 @@ reportPush: report
 # Pull the last changes and then push to heroku.
 ###
 heroku:
-	git pull git@github.com:glitxt/API.git
+	git pull git@github.com:glitxt/glitxt.api.git
 	git push
 
 
