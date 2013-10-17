@@ -16,12 +16,12 @@ var decode = require('./decode');
  * @param restify - the restify app
  */
  module.exports = function(restify) {
-
 	restify.get('/', index);
   // Routes
   restify.get('/ping', ping);
   restify.get('/encode', encode);
   restify.get('/decode', decode);
+  //restify.get('/is_glitched', decode);
   //restify.get('/data', data.index);
   //restify.get('/data/imgs', data.imgs);
   //restify.get('/data/img/*.png', data.imgs);
