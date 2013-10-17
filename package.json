@@ -20,7 +20,7 @@
     "url": "https://github.com/glitxt/API/issues"
   },
   "dependencies": {
-    "glitxt": "https://github.com/glitxt/glitxt/tarball/master",
+    "glitxt": "https://github.com/glitxt/glitxt/archive/v0.1.0.tar.gz",
     "restify": "2.6.0",
     "bunyan": "0.22.0",
     "request": "2.27.0"
