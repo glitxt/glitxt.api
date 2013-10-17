@@ -3,27 +3,20 @@
 ###
 
 
+COMMON_MAKEFILES_PATH=node_modules/CommonMakefiles
+include $(COMMON_MAKEFILES_PATH)/index.make
+include $(COMMON_MAKEFILES_PATH)/node/all.make
+
+MOCHA_TIMEOUT = 30000
+HINT_DIR = server.js routes/ lib/
+
+
 ###
 # Run the Server.
 ###
 run:
 	@node server.js
 
-
-###
-# Test it.
-###
-test: hint
-	@echo "Test the Server"
-	@node node_modules/.bin/mocha --timeout 30000 --reporter spec
-
-
-###
-# Hint task.
-###
-
-hint:
-	@node node_modules/.bin/jshint server.js routes/ lib/
 
 ###
 # Generate docs.

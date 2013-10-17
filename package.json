@@ -26,6 +26,7 @@
     "request": "2.27.0"
   },
   "devDependencies": {
+    "CommonMakefiles": "https://github.com/subtub/CommonMakefiles/tarball/master",
     "mocha": "1.13.0",
     "supertest" : "0.8.0",
     "jshint": "2.1.11",
