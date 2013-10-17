@@ -11,8 +11,7 @@ var restify = require('restify');
 var routes = require('./routes');
 var pkg = require('./package.json');
 
-// The log variable is global, so we can call the logger at any other file.
-log = bunyan.createLogger({
+var log = bunyan.createLogger({
   name: 'glitxt',
   level: process.env.LOG_LEVEL || 'info',
   stream: process.stdout,

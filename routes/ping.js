@@ -9,6 +9,6 @@ var api = require('../lib/api');
 module.exports = function(req, res, next) {
   var obj = {status:'OK', response:{message:'pong'}};
   res.send(api.model(res, obj));
-  log.info('GET /ping');
+  req.log.info('GET /ping');
   return next();
 };
