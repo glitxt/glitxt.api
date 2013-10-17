@@ -12,31 +12,41 @@ var api = require('../lib/api');
  */
 module.exports = function(req, res, next) {
   // the queries we use at this route.
-  var qUrl = req.query.url;
+  var qSource = req.query.source;
   
-  // If a query exists...
-  if (qUrl) {
+  // If the "source" query exists, lets decode the message...
+  if (qSource) {
     // request the image.
-    request.get({url: 'http://www.google.com/images/errors/logo_sm.gif', encoding: null}, function(error, response, data) {
-      console.log(data);
-      // // Decode it...
-      var tmpMessage = glitxt.decode(data);
-      var obj = {
-        response: {
-          message: tmpMessage,
-          source: qUrl
-        }
-      };
-      res.send(api.model(res, obj));
-    });
-    
+    request.get({url: 'http://'+qSource, encoding: null}, function(error, response, data) {
+      // If an error occured, add the error array to the response area and send it.
+      if (error) {
+        var objError = {
+          code: 400,
+          response: {
+            message: error
+          }
+        };
+        res.send(api.model(res, objError));
+      }
+      // If the file is correctly requested, decode it...
+      else {
+        var tmpMessage = glitxt.decode(data);
+        var obj = {
+          response: {
+            message: tmpMessage,
+            source: qSource
+          }
+        };
+        res.send(api.model(res, obj));
+      }
+    }); // End request.get
   }
   // If no query exists, return an error json.
   else {
     var obj = {
       code: 400,
       response: {
-        message: 'need a url query.'
+        message: 'need a source query to decode a file.'
       }
     };
     res.send(api.model(res, obj));
