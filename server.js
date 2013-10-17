@@ -6,28 +6,44 @@
 /**
  * Module dependencies.
  */
+var bunyan = require('bunyan');
 var restify = require('restify');
 var routes = require('./routes');
 var pkg = require('./package.json');
 
+// The log variable is global, so we can call the logger at any other file.
+log = bunyan.createLogger({
+  name: 'glitxt',
+  level: process.env.LOG_LEVEL || 'info',
+  stream: process.stdout,
+  serializers: bunyan.stdSerializers
+});
+
 // Server
 var server = restify.createServer({
 	name: 'glitxt',
-  version: pkg.version
+  version: pkg.version,
+  log: log
 });
 // Use the common stuff you probably want
 server.use(restify.acceptParser(server.acceptable));
 server.use(restify.dateParser());
 server.use(restify.queryParser());
-server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
+server.use(restify.gzipResponse());
 // Set a per request bunyan logger (with requestid filled in)
 server.use(restify.requestLogger());
 // Allow 5 requests/second by IP, and burst to 10
 server.use(restify.throttle({
-        burst: 10,
-        rate: 5,
-        ip: true,
+  burst: 10,
+  rate: 5,
+  ip: true,
+  overrides: {
+    '127.0.0.1': {
+      rate: 0, // unlimited
+      burst: 0
+    }
+  }
 }));
 // Clean up sloppy paths like //ping////////
 server.pre(restify.pre.sanitizePath());
@@ -39,5 +55,5 @@ routes(server);
 
 // Create the Server.
 server.listen(4000, function() {
-  console.log('%s listening at %s', server.name, server.url);
+  log.info('%s listening at %s', server.name, server.url);
 });
