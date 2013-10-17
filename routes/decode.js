@@ -34,4 +34,5 @@ module.exports = function(req, res, next) {
     };
     res.send(api.model(res, obj));
   }
+  log.info('GET /decode');
 };

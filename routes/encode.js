@@ -33,4 +33,5 @@ module.exports = function(req, res, next) {
     //api.responseJson(res, tmp);
     api.responseImage(res, process.env.PWD+'/cat.gif');
   //});
+  log.info('GET /encode');
 };
