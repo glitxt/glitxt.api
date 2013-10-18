@@ -32,4 +32,13 @@ describe('lib/utils.js', function() {
 
   });
 
+  describe('#fixSourceString()', function() {
+
+    it('should return...', function() {
+      var result = utils.fixSourceString('http:/www.foo.com/bar.html');
+      assert.equal('http://www.foo.com/bar.html', result);
+    });
+
+  });
+
 });
