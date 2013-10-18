@@ -3,7 +3,7 @@
  */
 var request = require('request');
 var glitxt = require('glitxt');
-var api = require('../lib/api');
+var model = require('../models');
 var utils = require('../lib/utils');
 
 
@@ -49,13 +49,7 @@ module.exports = function(req, res, next) {
       request.get({url: fixedSource, encoding: null}, function(error, response, data) {
         // If an error occured, add the error array to the response area and send it.
         if (error) {
-          var objError = {
-            code: 400,
-            response: {
-              message: error
-            }
-          };
-          res.send(api.model(res, objError));
+          res.send(model.error(res, error));
         }
         // If the file is correctly requested, decode it...
         else {
@@ -66,23 +60,17 @@ module.exports = function(req, res, next) {
               source: fixedSource
             }
           };
-          res.send(api.model(res, obj));
+          res.send(model.base(res, obj));
         }
       }); // End request.get
     }
     else {
-      res.send('TODO: error message');
+      res.send(model.error(res, 'TODO: error message'));
     }
   }
   // If no "source" query exists, return an error json.
   else {
-    var obj = {
-      code: 400,
-      response: {
-        message: 'need a source query to decode a file.'
-      }
-    };
-    res.send(api.model(res, obj));
+    res.send(model.error(res, 'need a source query to decode a file.'));
   }
   req.log.info('GET /decode');
   return next();
