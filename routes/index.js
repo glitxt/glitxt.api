@@ -2,6 +2,7 @@
  * Module dependencies.
  */
 var api = require('../lib/api');
+var model = require('../models');
 
 // Routes
 var ping = require('./ping');
@@ -43,6 +44,6 @@ function index(req, res, next) {
       //data: api.BASE_URL+'/data'
     }
   };
-  res.send(api.model(res, obj));
+  res.send(model.base(res, obj));
   req.log.info('GET /');
 }
