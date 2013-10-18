@@ -18,7 +18,7 @@ var api = require('../lib/api');
  * @apiparam {String} source The url to the image you want to encode.
  *
  * @apiExample Example usage:
- *     curl -i http://api.glitxt.com/encode?text=hello&source=url
+ *     http://api.glitxt.com/encode?text=hello&source=glitxt.com/glitxt/test/files/test.gif
  */
 module.exports = function(req, res, next) {
   var qText = req.query.text;
