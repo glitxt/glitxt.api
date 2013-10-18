@@ -4,3 +4,5 @@
 
 The api.glitxt.com server.  
 At the moment this is totally Work in Progress...  
+
+The documentation can be found [here](http://glitxt.com/glitxt.api/).
