@@ -31,7 +31,7 @@ docs:
 ###
 report:
 	@echo "Generate 'plato' Report"
-	@node node_modules/.bin/plato --dir report --exclude lib/*.js lib/apiModel.js routes/*.js server.js --title glitxt.api
+	@node node_modules/.bin/plato --dir report --exclude lib/*.js lib/api.js routes/*.js server.js --title glitxt.api
 	
 reportPush: report
 	@git checkout gh-pages
