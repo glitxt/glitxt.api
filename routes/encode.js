@@ -6,14 +6,23 @@ var glitxt = require('glitxt');
 var request = require('request');
 var api = require('../lib/api');
 
+
 /**
- * The /encode route
- * Encode a text message and return an image.
+ * @api {get} /encode?text=message&source=url GET encode
+ * @apiVersion 0.1.0
+ * @apiGroup Encode
+ * @apiDescription
+ *     Encode a text message and return the generated image.
+ *
+ * @apiParam {String} text The text you want to encode into the image.
+ * @apiparam {String} source The url to the image you want to encode.
+ *
+ * @apiExample Example usage:
+ *     curl -i http://api.glitxt.com/encode?text=hello&source=url
  */
 module.exports = function(req, res, next) {
   var qText = req.query.text;
   var qSource = req.query.source;
-
 
   // Check if a text query exist...
   if (qText !== undefined) {

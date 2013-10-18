@@ -5,9 +5,8 @@ var api = require('../lib/api');
 
 
 /**
- * @api {get} /ping Ping the API
+ * @api {get} /ping GET ping
  * @apiVersion 0.1.0
- * @apiName GetPing
  * @apiGroup Ping
  * @apiDescription
  *     Send a ping request to check if the glitxt API is still working.
