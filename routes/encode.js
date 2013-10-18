@@ -2,9 +2,10 @@
  * Module dependencies.
  */
 var fs = require('fs');
-var glitxt = require('glitxt');
 var request = require('request');
+var glitxt = require('glitxt');
 var api = require('../lib/api');
+var utils = require('../lib/utils');
 
 
 /**
@@ -15,7 +16,7 @@ var api = require('../lib/api');
  *     Encode a text message and return the generated image.
  *
  * @apiParam {String} text The text you want to encode into the image.
- * @apiparam {String} source The url to the image you want to encode.
+ * @apiparam {String} source The image url you want to encode.
  *
  * @apiExample Example usage:
  *     http://api.glitxt.com/encode?text=hello&source=glitxt.com/glitxt/test/files/test.gif
@@ -28,15 +29,21 @@ module.exports = function(req, res, next) {
   if (qText !== undefined) {
     // If an image url is available, request the image and encode it.
     if (qSource !== undefined) {
-      //console.log(qSource);
-      // If http:// is at the query, a slash is missing...
-      request.get({url: 'http://'+qSource, encoding: null}, function(error, response, data) {
-        //console.log(error);
-        var tmpBuffer = glitxt.encode(data, qText);
-        res.contentType = 'image/gif';
-        res.writeHead(200);
-        res.end(tmpBuffer);
-      });
+
+      var fixedSource = utils.fixSourceString(qSource);
+      //console.log(fixedSource);
+
+      // Check if the protokol is valid...
+      var check = utils.checkProtokol(fixedSource);
+      if (check.valid) {
+        request.get({url: fixedSource, encoding: null}, function(error, response, data) {
+          //console.log(error);
+          var tmpBuffer = glitxt.encode(data, qText);
+          res.contentType = 'image/gif';
+          res.writeHead(200);
+          res.end(tmpBuffer);
+        });
+      };
     }
     // If no image is set, we use a default cat image...
     else {
@@ -52,6 +59,7 @@ module.exports = function(req, res, next) {
   // If no text query can be found, send an error...
   else {
     var obj = {
+      code: 400,
       response: {
         message: 'We need an text query to encode your message correct.'
       }
@@ -60,4 +68,5 @@ module.exports = function(req, res, next) {
   }
 
   req.log.info('GET /encode');
+  return next();
 };

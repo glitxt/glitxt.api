@@ -1,10 +1,10 @@
 /**
  * Module dependencies.
  */
-var glitxt = require('glitxt');
 var request = require('request');
-var fs = require('fs');
+var glitxt = require('glitxt');
 var api = require('../lib/api');
+var utils = require('../lib/utils');
 
 
 /**
@@ -14,7 +14,7 @@ var api = require('../lib/api');
  * @apiDescription
  *     Decode an image and return a json object with the secret message.
  *
- * @apiParam {String} source The image you want to decode.
+ * @apiParam {String} source The image url you want to decode.
  *
  * @apiSuccessExample Success-Response:
  *     HTTP/1.1 200 OK
@@ -31,7 +31,7 @@ var api = require('../lib/api');
  *     }
  *
  * @apiExample Example usage:
- *     curl -i http://api.glitxt.com/decode?source=url
+ *     curl -i http://api.glitxt.com/decode?source=https://dl.dropboxusercontent.com/u/2874680/glitxt/hello-world.gif
  */
 module.exports = function(req, res, next) {
   // the queries we use at this route.
@@ -39,32 +39,42 @@ module.exports = function(req, res, next) {
   
   // If the "source" query exists, lets decode the message...
   if (qSource) {
-    // request the image.
-    request.get({url: 'http://'+qSource, encoding: null}, function(error, response, data) {
-      // If an error occured, add the error array to the response area and send it.
-      if (error) {
-        var objError = {
-          code: 400,
-          response: {
-            message: error
-          }
-        };
-        res.send(api.model(res, objError));
-      }
-      // If the file is correctly requested, decode it...
-      else {
-        var tmpMessage = glitxt.decode(data);
-        var obj = {
-          response: {
-            message: tmpMessage,
-            source: 'http://'+qSource
-          }
-        };
-        res.send(api.model(res, obj));
-      }
-    }); // End request.get
+
+    var fixedSource = utils.fixSourceString(qSource);
+
+    // Check if the protokol is valid...
+    var check = utils.checkProtokol(fixedSource);
+    if (check.valid) {
+      // request the image.
+      request.get({url: fixedSource, encoding: null}, function(error, response, data) {
+        // If an error occured, add the error array to the response area and send it.
+        if (error) {
+          var objError = {
+            code: 400,
+            response: {
+              message: error
+            }
+          };
+          res.send(api.model(res, objError));
+        }
+        // If the file is correctly requested, decode it...
+        else {
+          var tmpMessage = glitxt.decode(data);
+          var obj = {
+            response: {
+              message: tmpMessage,
+              source: fixedSource
+            }
+          };
+          res.send(api.model(res, obj));
+        }
+      }); // End request.get
+    }
+    else {
+      res.send('TODO: error message');
+    }
   }
-  // If no query exists, return an error json.
+  // If no "source" query exists, return an error json.
   else {
     var obj = {
       code: 400,
@@ -75,4 +85,5 @@ module.exports = function(req, res, next) {
     res.send(api.model(res, obj));
   }
   req.log.info('GET /decode');
+  return next();
 };
