@@ -4,7 +4,7 @@
 var fs = require('fs');
 var request = require('request');
 var glitxt = require('glitxt');
-var api = require('../lib/api');
+var model = require('../models');
 var utils = require('../lib/utils');
 
 
@@ -58,13 +58,7 @@ module.exports = function(req, res, next) {
   }
   // If no text query can be found, send an error...
   else {
-    var obj = {
-      code: 400,
-      response: {
-        message: 'We need an text query to encode your message correct.'
-      }
-    };
-    res.send(api.model(res, obj));
+    res.send(model.error(res, 'We need an text query to encode your message correct.'));
   }
 
   req.log.info('GET /encode');
