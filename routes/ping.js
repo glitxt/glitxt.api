@@ -1,7 +1,7 @@
 /**
  * Module dependencies.
  */
-var api = require('../lib/api');
+var model = require('../models');
 
 
 /**
@@ -29,7 +29,7 @@ var api = require('../lib/api');
  */
 module.exports = function(req, res, next) {
   var obj = {status:'OK', response:{message:'pong'}};
-  res.send(api.model(res, obj));
+  res.send(model.base(res, obj));
   req.log.info('GET /ping');
   return next();
 };
