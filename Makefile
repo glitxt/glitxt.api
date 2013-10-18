@@ -23,6 +23,7 @@ run:
 ###
 docs:
 	#@node node_modules/.bin/subtool --help
+	@node_modules/.bin/apidoc --input routes/ --output docs/
 
 
 ###
