@@ -1,7 +1,8 @@
 {
   "name": "glitxt.api",
-  "version": "0.0.1",
-  "description": "The glitxt.com api",
+  "version": "0.1.0",
+  "description": "The glitxt.com API",
+  "apidocFilename": "README.md",
   "main": "index.js",
   "scripts": {
     "start": "foreman start",
