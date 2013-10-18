@@ -33,5 +33,5 @@ exports.base = base;
  * The error object.
  */
 exports.error = function(res, errorMessage) {
-	return base(res, {message: errorMessage});
+	return base(res, {error: errorMessage});
 }

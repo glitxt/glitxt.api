@@ -33,7 +33,7 @@ describe('models/index.js', function() {
           url: 'http://api.glitxt.com'
         },
         response: {
-          message: 'foo'
+          error: 'foo'
         }
       }
       assert.deepEqual(actual, expected);
