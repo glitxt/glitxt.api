@@ -50,6 +50,11 @@ server.pre(restify.pre.sanitizePath());
 // Handles annoying user agents (curl)
 server.pre(restify.pre.userAgentConnection());
 
+// Serve the static docs files.
+server.get(/\/docs\/?.*/, restify.serveStatic({
+  directory: './public'
+}));
+
 // The API routes
 routes(server);
 
