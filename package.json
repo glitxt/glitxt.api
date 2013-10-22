@@ -20,6 +20,10 @@
   "bugs": {
     "url": "https://github.com/glitxt/glitxt.api/issues"
   },
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.2.x"
+  },
   "dependencies": {
     "glitxt": "https://github.com/glitxt/glitxt/archive/v0.1.0.tar.gz",
     "restify": "2.6.0",
