@@ -2,12 +2,14 @@ language: node_js
 node_js:
 - 0.8
 - 0.1
+
 notifications:
   email:
     recipients:
       - paul@subtub.io
     on_success: always
     on_failure: always
+
 deploy:
   provider: heroku
   api_key:
@@ -15,6 +17,9 @@ deploy:
   app: glitxt-api
   on:
     repo: glitxt/glitxt.api
+before_deploy:
+  - make docs
+
 env:
   global:
   - secure: XMuUMzVv8EkjPeNjsjNn6bS8ts5MqEVsWHcwwqoMtej2VTFsvIlz2r3jMN0EWD77adSgYdOBIi7eJ4r7kg4qLBKTo30jcbvpJKm7vmUVrXCfCCKc+DNKqlrXtLX3ZjzpQVZb8BcargycpTr2Bf5DWdvP8LQvK6NtOJm79Txwgjo=
