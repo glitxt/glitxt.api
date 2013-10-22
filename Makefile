@@ -22,8 +22,9 @@ run:
 # Generate docs.
 ###
 docs:
-	#@node node_modules/.bin/subtool --help
-	@node_modules/.bin/apidoc --input routes/ --output docs/
+	$(PRINT) "\nGenerate the Docs"
+	@node_modules/.bin/apidoc --verbose false --input routes/ --output public/docs/
+	$(PRINT) "Docs Ready!\n"
 
 
 ###
