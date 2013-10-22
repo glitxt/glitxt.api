@@ -2,6 +2,12 @@ language: node_js
 node_js:
 - 0.8
 - 0.1
+notifications:
+  email:
+    recipients:
+      - paul@subtub.io
+    on_success: always
+    on_failure: always
 deploy:
   provider: heroku
   api_key:
