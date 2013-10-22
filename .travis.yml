@@ -1,7 +1,6 @@
 language: node_js
 node_js:
-- 0.8
-- 0.1
+- "0.10"
 
 notifications:
   email:
@@ -17,7 +16,7 @@ deploy:
   app: glitxt-api
   on:
     repo: glitxt/glitxt.api
-before_deploy:
+after_deploy:
   - make docs
 
 env:
