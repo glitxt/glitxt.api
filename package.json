@@ -29,13 +29,13 @@
     "CommonMakefiles": "https://github.com/subtub/CommonMakefiles/tarball/master",
     "restify": "2.6.0",
     "bunyan": "0.22.0",
-    "request": "2.27.0"
+    "request": "2.27.0",
+    "apidoc": "0.2.6"
   },
   "devDependencies": {
     "mocha": "1.13.0",
     "supertest" : "0.8.0",
     "jshint": "2.1.11",
-    "apidoc": "0.2.6",
     "plato": "*"
   }
 }
