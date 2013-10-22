@@ -26,12 +26,12 @@
   },
   "dependencies": {
     "glitxt": "https://github.com/glitxt/glitxt/archive/v0.1.0.tar.gz",
+    "CommonMakefiles": "https://github.com/subtub/CommonMakefiles/tarball/master",
     "restify": "2.6.0",
     "bunyan": "0.22.0",
     "request": "2.27.0"
   },
   "devDependencies": {
-    "CommonMakefiles": "https://github.com/subtub/CommonMakefiles/tarball/master",
     "mocha": "1.13.0",
     "supertest" : "0.8.0",
     "jshint": "2.1.11",

@@ -1,1 +1,1 @@
-web: node server.js | ./node_modules/.bin/bunyan
+web: make docs && node server.js | ./node_modules/.bin/bunyan
