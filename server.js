@@ -52,7 +52,8 @@ server.pre(restify.pre.userAgentConnection());
 
 // Serve the static docs files.
 server.get(/\/docs\/?.*/, restify.serveStatic({
-  directory: './public'
+  directory: './public',
+  default: '/docs/index.html'
 }));
 
 // The API routes
