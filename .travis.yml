@@ -2,3 +2,7 @@ language: node_js
 node_js:
   - 0.8
   - 0.10
+deploy:
+  provider: heroku
+  api_key: "gDQ8AcU7mJzPw03wXUtEU7VDHEHgDpqvM0dkHYIFSHNSSksw0iTSTrduBNxTVKHu8CTkYBmk8k9muTekX6YUrsuJVm8LVS5JlugV+OL4pPeXddq+ullv7mee9EYAD+MpySlG8qDjDhf3r0an8qDOF8nindTPojab7iUzVhCGp+A="
+  app: glitxt-api
