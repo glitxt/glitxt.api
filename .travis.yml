@@ -1,8 +1,17 @@
 language: node_js
 node_js:
-  - 0.8
-  - 0.10
+- 0.8
+- 0.1
 deploy:
   provider: heroku
-  api_key: "gDQ8AcU7mJzPw03wXUtEU7VDHEHgDpqvM0dkHYIFSHNSSksw0iTSTrduBNxTVKHu8CTkYBmk8k9muTekX6YUrsuJVm8LVS5JlugV+OL4pPeXddq+ullv7mee9EYAD+MpySlG8qDjDhf3r0an8qDOF8nindTPojab7iUzVhCGp+A="
+  api_key:
+    secure: Els4fgDlBsr/NRttz8NMfHLBvW5J8RsQFkQYJlBP6hEFHuoY11xFcvNAIeJH5CGB5gHX5qj+GFvzQhpokgUKK65fP+4N6eezqO4ZkH3/U7/9gfqjAl2fCCaD8bwKgq3ihV+F8h2liomHOtdoVQvtbuDyVa+2piKQJL04z1b9+YM=
   app: glitxt-api
+  on:
+    repo: glitxt/glitxt.api
+env:
+  global:
+  - secure: XMuUMzVv8EkjPeNjsjNn6bS8ts5MqEVsWHcwwqoMtej2VTFsvIlz2r3jMN0EWD77adSgYdOBIi7eJ4r7kg4qLBKTo30jcbvpJKm7vmUVrXCfCCKc+DNKqlrXtLX3ZjzpQVZb8BcargycpTr2Bf5DWdvP8LQvK6NtOJm79Txwgjo=
+  - secure: FFuUIdNii20q3/Rvbxa+1b6qlUdKr34vbFbdfv7VFquem/8ikjHLf0eSqFuFkR1OLvMKVDs+y4cVYpTZQ8cGkF8UPanDVrPFG5nrIQqvl2u5YFrszSB659X2yyhravBvR1KQL88pC0vFgStLFNra5JXD1JEKkJ17RoZBIQWWvgM=
+api_key:
+  secure: MLm+5fD3n66/Nt+syhw94Lr5AqTTvLpMwycA8VjrRkHZWUFA04JPxIsXogwW6qAyW29Oc+A6xvDhpyvu+exOyp++DOoSBAc+xgdb41ujnIKhr4YNazC+LCNdfpDamPSQK5P/Kk2CVb/I+UicymKaBJ5zqMpbpjWxmbkw/7skXS8=
