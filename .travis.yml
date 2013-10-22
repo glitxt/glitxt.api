@@ -16,9 +16,9 @@ deploy:
   app: glitxt-api
   on:
     repo: glitxt/glitxt.api
-after_deploy:
-  - npm install
-  - make docs
+  run:
+    - npm install
+    - make docs
 
 env:
   global:
