@@ -43,7 +43,7 @@ module.exports = function(req, res, next) {
           res.writeHead(200);
           res.end(tmpBuffer);
         });
-      };
+      }
     }
     // If no image is set, we use a default cat image...
     else {
