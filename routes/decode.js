@@ -63,7 +63,7 @@ module.exports = function(req, res, next) {
       }); // End request.get
     }
     else {
-      res.send(model.error(res, 'TODO: error message'));
+      res.send(model.error(res, 'source not available'));
     }
   }
   // If no "source" query exists, return an error json.
