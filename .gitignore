@@ -10,3 +10,10 @@
 ###
 
 node_modules/
+
+
+###
+# Docs
+###
+
+public/docs/
