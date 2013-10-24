@@ -37,12 +37,10 @@ var decode = require('./decode');
  */
 function index(req, res, next) {
   var obj = {
-    response: {
-      ping: api.BASE_URL+'/ping',
-      encode: api.BASE_URL+'/encode',
-      decode: api.BASE_URL+'/decode'//,
-      //data: api.BASE_URL+'/data'
-    }
+    ping: api.BASE_URL+'/ping',
+    encode: api.BASE_URL+'/encode',
+    decode: api.BASE_URL+'/decode'//,
+    //data: api.BASE_URL+'/data'
   };
   res.send(model.base(res, obj));
   req.log.info('GET /');

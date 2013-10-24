@@ -28,7 +28,7 @@ var model = require('../models');
  *     curl -i http://api.glitxt.com/ping
  */
 module.exports = function(req, res, next) {
-  var obj = {status:'OK', response:{message:'pong'}};
+  var obj = {message:'pong'};
   res.send(model.base(res, obj));
   req.log.info('GET /ping');
   return next();

@@ -55,10 +55,8 @@ module.exports = function(req, res, next) {
         else {
           var tmpMessage = glitxt.decode(data);
           var obj = {
-            response: {
-              message: tmpMessage,
-              source: fixedSource
-            }
+            message: tmpMessage,
+            source: fixedSource
           };
           res.send(model.base(res, obj));
         }
