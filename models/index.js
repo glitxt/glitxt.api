@@ -33,5 +33,5 @@ exports.base = base;
  * The error object.
  */
 exports.error = function(res, errorMessage) {
-	return base(res, {error: errorMessage});
+	return base({statusCode: 400}, {error: errorMessage});
 }
