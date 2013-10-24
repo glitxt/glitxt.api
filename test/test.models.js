@@ -28,7 +28,7 @@ describe('models/index.js', function() {
       var actual = model.error(res, 'foo');
       var expected = {
         meta: {
-          code: 200,
+          code: 400,
           version: '0.1.0',
           url: 'http://api.glitxt.com'
         },
