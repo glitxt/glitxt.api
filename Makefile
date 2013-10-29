@@ -2,9 +2,7 @@
 # glitxt.api Makefile
 ###
 
-
-COMMON_MAKEFILES_PATH=node_modules/CommonMakefiles
-include $(COMMON_MAKEFILES_PATH)/node.make
+include node_modules/common-makefiles/node.make
 
 MOCHA_TIMEOUT = 30000
 HINT_DIR = server.js routes/ lib/
