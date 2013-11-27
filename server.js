@@ -6,6 +6,7 @@
 /**
  * Module dependencies.
  */
+require('newrelic');
 var bunyan = require('bunyan');
 var restify = require('restify');
 var routes = require('./routes');
