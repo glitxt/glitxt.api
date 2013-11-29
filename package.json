@@ -30,7 +30,8 @@
     "restify": "2.6.0",
     "bunyan": "0.22.0",
     "request": "2.27.0",
-    "apidoc": "0.2.6"
+    "apidoc": "0.2.6",
+    "newrelic": "*"
   },
   "devDependencies": {
     "mocha": "1.13.0",
